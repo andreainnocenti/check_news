@@ -23,7 +23,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           # Parole chiave separate da virgola. Aggiungi il nome dell'avversario se vuoi.
-          KEYWORDS: "bigliett,ticket"
+          KEYWORDS: "bigliett,ticket,champions,psg,parigi,paris"
         run: python3 check.py
 
       - name: Salva lo stato
