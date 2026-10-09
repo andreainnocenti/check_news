@@ -16,7 +16,7 @@ URL = "https://www.asroma.com/it/notizie"
 STATE_FILE = "seen.json"
 KEYWORDS = [
     k.strip().lower()
-    for k in os.environ.get("KEYWORDS", "bigliett,ticket,parigi,psg,champions").split(",")
+    for k in os.environ.get("KEYWORDS", "bigliett,ticket,parigi,paris,psg,champions").split(",")
     if k.strip()
 ]
 ARTICLE_RE = re.compile(r"/it/notizie/(\d+)/([\w\-]+)")
