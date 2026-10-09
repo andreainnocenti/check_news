@@ -24,6 +24,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           # Parole chiave separate da virgola. Aggiungi il nome dell'avversario se vuoi.
           KEYWORDS: "bigliett,ticket,champions,psg,parigi,paris"
+          REPEAT: "4"
         run: python3 check.py
 
       - name: Salva lo stato
