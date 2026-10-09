@@ -9,6 +9,7 @@ import re
 import sys
 import urllib.parse
 import urllib.request
+import urllib.error
 from html.parser import HTMLParser
 
 URL = "https://www.asroma.com/it/notizie"
@@ -54,12 +55,16 @@ def fetch_articles():
 
 
 def send_telegram(text):
-    token = os.environ["TELEGRAM_BOT_TOKEN"]
-    chat_id = os.environ["TELEGRAM_CHAT_ID"]
+    token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+    chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
     data = urllib.parse.urlencode({"chat_id": chat_id, "text": text}).encode()
-    urllib.request.urlopen(
-        f"https://api.telegram.org/bot{token}/sendMessage", data, timeout=30
-    )
+    try:
+        urllib.request.urlopen(
+            f"https://api.telegram.org/bot{token}/sendMessage", data, timeout=30
+        )
+    except urllib.error.HTTPError as e:
+        print("Telegram ha risposto:", e.read().decode())
+        raise
 
 
 def load_seen():
